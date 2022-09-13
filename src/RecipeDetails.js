@@ -92,7 +92,7 @@ function RecipeDetails(props){
 
     useEffect(()=>{
         details(id)
-    },[])
+    },[id])
 
     return(
         <div className="recipeDetails">
