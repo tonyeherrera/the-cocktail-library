@@ -68,7 +68,7 @@ function RecipeDetails(props){
         strIngredient14,
         strIngredient15]
 
-    const ingredientsList = ingredientArr.map(ingredient => ingredient && <li>{ingredient}</li>)
+    const ingredientsList = ingredientArr.map((ingredient, i) => ingredient && <li key={i}>{ingredient}</li>)
 
     const measuresArr =[
     strMeasure1,
@@ -87,12 +87,12 @@ function RecipeDetails(props){
     strMeasure14,
     strMeasure15]
 
-    const measurementsList = measuresArr.map(measurement => measurement && <li>{measurement}</li>)
+    const measurementsList = measuresArr.map((measurement, i) => measurement && <li key={i}>{measurement}</li>)
 
 
     useEffect(()=>{
         details(id)
-    },[id])
+    },[details, id])
 
     return(
         <div className="recipeDetails">

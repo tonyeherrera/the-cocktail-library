@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useCallback} from "react"
 import axios from "axios"
 
 const DataContext = React.createContext()
@@ -75,10 +75,10 @@ function DataContextProvider(props){
 
     const [recipe, setRecipe] = useState({})
 
-    function details(selected){
+    const details = useCallback(selected => {
         axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${selected}`)
         .then(response => setRecipe(response.data.drinks[0]))
-    }
+    },[])
 
     function saveRecipe(event){
         const id = event.target.id
