@@ -1,0 +1,370 @@
+body {
+  max-width:100%;
+  max-height:100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  right: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 150%;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+a:hover, a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 11px;
+  right: 7px;
+  font-size: 2rem;
+  background-color: transparent;
+  border-color: transparent;
+  color:#818181
+}
+
+.closebtn:hover{
+  color: #f1f1f1
+}
+
+
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+.navBar{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px 5px 20px;
+  background: linear-gradient(148deg, #FAF38F 0%, #8c6309 100%);
+  border-radius:1px;
+  height:100px;
+}
+
+#menu{
+  width: 30px;
+  height:30px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-radius:10px
+}
+
+#logo{
+  font-family: Cinzel;
+  color: rgb(62, 56, 56);
+  text-shadow: 1px 1px 1px white;
+}
+
+#menu--image{
+  background-color:white;
+  width: 20px;
+  height:20px;
+  border-radius:5px
+}
+
+.content{
+  height:100%;
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background: linear-gradient(180deg, rgba(8,1,13,1) 0%, rgb(58, 56, 50) 2%, rgb(213, 210, 206) 82%);
+  color:aliceblue;
+  padding-bottom:50%;
+  text-align: center;
+}
+.recipeCard{
+  width:270px;
+  height:430px;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  border:2px ridge gray;
+  border-radius:20px;
+  padding:5px 5px 5px 5px;
+  align-self: center;
+  justify-self: center; 
+  background: linear-gradient(148deg, #FAF38F 0%, #8c6309 100%);
+}
+
+.recipeCard--img{
+  width:250px;
+  height:200px;
+  border-radius:15px 15px 0px 0;
+  border:1px solid rgb(39, 37, 33)                                                                           
+}
+
+.recipeCard--details{
+  width:240px;
+  height:220px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  background-color:rgba(87, 86, 85, 0.8);
+  border-radius:0 0 15px 15px;
+  border:1px solid rgba(39, 37, 33);
+  font-size: 15px;
+  padding:5px;
+  color:rgb(38, 36, 36);
+  margin:0
+}
+
+.recipeCard > h2{
+  font-size:10px;
+}
+
+.recipeCard--details > ul{
+  height:150px;
+  align-self:flex-start;
+  padding-bottom:5px;
+}
+
+.recipeCard--save{
+  height:30px;
+  width:30px;
+  background-color:transparent;
+  border-radius:50%;
+  display:flex;
+  border:0;
+}
+
+.recipeCard--save > img{
+  height: 30px;
+  width: 30px;
+  background-color:transparent;
+ 
+}
+
+.recipeCard--remove{
+  height:30px;
+  width:30px;
+  background-color:transparent;
+  border-radius:50%;
+  display:flex;
+  border:0;
+}
+
+.recipeCard--remove > img{
+  height: 30px;
+  width: 30px;
+  background-color:transparent;
+ 
+}
+
+
+.home{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search{
+  min-width:100%;
+  display:flex;
+  flex-direction: column;
+}
+
+.search > h1{
+  text-align: center;
+}
+
+.search > hr{
+  width:100%;
+}
+
+.search--form{
+  min-width:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width:600px) {
+  .search--list{
+  width:300px;
+  display:flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}}
+
+.search--list{
+  display:grid;
+  grid-gap:5px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-rows: repeat(4, 460px)
+}
+
+
+.saved{
+  min-width:100%;
+  display:flex;
+  flex-direction: column;
+}
+
+.saved > h1{
+  text-align: center;
+}
+
+.saved > hr{
+  width:100%;
+}
+
+@media screen and (max-width:600px) {
+  .saved--list{
+  width:300px;
+  display:flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}}
+
+.saved--list{
+  display:grid;
+  grid-gap:5px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-rows: repeat(4, 450px)
+}
+
+.recipeDetails{
+  margin-top:20px;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* @media screen and (max-width:600px){
+.recipeDetails{
+    margin-top:20px;
+    width: 350px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.recipeDetails--title{
+  width:300px;
+  background-color: #8c6309;
+  padding:10px;
+}
+
+.recipeDetails > img{
+  width:300px;
+}
+
+.recipeDetails--details{
+  width:280px;
+  background-color: #8c6309;
+  padding:10px;
+}
+
+.recipeDetails--ingredients{
+  display:flex;
+}
+} */
+
+.recipeDetails--title{
+  width:330px;
+  background-color: #8c6309;
+  padding:10px;
+}
+
+.recipeDetails > img{
+  width:350px;
+}
+
+.recipeDetails--details{
+  width:330px;
+  background-color: #8c6309;
+  padding:10px;
+}
+
+.recipeDetails--ingredients{
+  display:flex;
+}
+
+.footer{
+  position: fixed;
+  bottom:0;
+  padding:10px 0 10px 0;
+  min-width:100%;
+  height:30px;
+  font-size: 5px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, rgb(213, 210, 206) 10%, rgb(58, 56, 50) 98%, rgba(8,1,13,1) 100%);
+  color:rgb(223, 219, 219);
+  text-shadow: 0px 0px 2px black;
+}
+
+.icon-container{
+  padding-left:20px;
+}
+
+.icons > img{
+  background-color:rgb(255, 255, 255);
+  box-shadow: 0 0 8px white;
+  border-radius:50%;
+  height:30px;
+  width:30px;
+  margin:5px;
+}
