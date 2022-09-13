@@ -46,7 +46,7 @@ function RecipeDetails(props){
         strMeasure12,
         strMeasure13,
         strMeasure14,
-        strMeasure15
+        strMeasure15}
         // strTags,
         // strVideo} 
     = recipe
