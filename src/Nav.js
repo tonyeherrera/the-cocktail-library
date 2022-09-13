@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import {Link} from "react-router-dom"
-import logo from "./logo(2).png"
+// import logo from "./logo(2).png"
 
 
 function Nav(){
