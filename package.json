@@ -1,0 +1,27 @@
+{
+  "name": "the-cocktail-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonyeherrera/the-cocktail-library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonyeherrera/the-cocktail-library/issues"
+  },
+  "homepage": "https://github.com/tonyeherrera/the-cocktail-library#readme",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.2",
+    "morgan": "^1.10.0"
+  }
+}
