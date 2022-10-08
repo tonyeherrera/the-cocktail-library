@@ -26,4 +26,34 @@ userDrinksRouter.post("/", (req, res, next) => {
     })
 })
 
+//delet userDrink
+userDrinksRouter.delete('/:userDrinkId', (req, res, next) => {
+    UserDrink.findOneAndDelete(
+        {_id: req.params.userDrinkId, auth: req.auth._id},
+        (err, deletedUserDrink) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(`Successfully deleted userDrink ${deletedUserDrink.strDrink}`)
+        }
+    )
+})
+
+//edit userDrink
+userDrinksRouter.put('/:userDrinkId', (req, res, next) => {
+    UserDrink.findOneAndUpdate(
+        {_id: req.params.userDrinkId, auth:req.auth._id},
+        req.body,
+        {new: true},
+        (err, updatedUserDrink) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(201).send(updatedUserDrink)
+        }
+    )
+})
+
 module.exports = userDrinksRouter
