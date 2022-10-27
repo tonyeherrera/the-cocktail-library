@@ -13,9 +13,21 @@ userDrinksRouter.get("/", (req, res, next) => {
     })
 })
 
+//get userDrinks by user Id
+userDrinksRouter.get("/user", (req, res, next) => {
+    UserDrink.find({user: req.auth._id}, (err, userDrinks) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(userDrinks)
+    })
+})
+
 //post new userDrink
 userDrinksRouter.post("/", (req, res, next) => {
     req.body.user = req.auth._id
+    req.body.author = req.auth.username
     const newUserDrink = new UserDrink(req.body)
     newUserDrink.save((err, savedUserDrink) => {
         if(err){
@@ -29,7 +41,7 @@ userDrinksRouter.post("/", (req, res, next) => {
 //delet userDrink
 userDrinksRouter.delete('/:userDrinkId', (req, res, next) => {
     UserDrink.findOneAndDelete(
-        {_id: req.params.userDrinkId, auth: req.auth._id},
+        {_id: req.params.userDrinkId, user: req.auth._id},
         (err, deletedUserDrink) => {
             if(err){
                 res.status(500)
@@ -43,7 +55,7 @@ userDrinksRouter.delete('/:userDrinkId', (req, res, next) => {
 //edit userDrink
 userDrinksRouter.put('/:userDrinkId', (req, res, next) => {
     UserDrink.findOneAndUpdate(
-        {_id: req.params.userDrinkId, auth:req.auth._id},
+        {_id: req.params.userDrinkId, user: req.auth._id},
         req.body,
         {new: true},
         (err, updatedUserDrink) => {

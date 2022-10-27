@@ -116,7 +116,12 @@ const userDrinkSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "User",
             required: true
-        }  
+        }, 
+        author:{
+            type: String,
+            ref: "User",
+            required: true
+        }
 })
 
 module.exports = mongoose.model("UserDrink", userDrinkSchema)

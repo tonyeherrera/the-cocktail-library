@@ -22,7 +22,7 @@ app.use((err, req, res, next) => {
     if(err.name === "UnauthorizedError"){
         res.status(err.status)
     }
-    return res.send({err: err.message})
+    return res.send({errMSG: err.message})
 })
 
 app.listen(9000, () => {
