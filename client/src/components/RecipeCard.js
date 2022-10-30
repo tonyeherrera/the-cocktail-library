@@ -58,8 +58,12 @@ function RecipeCard(props){
             setToggle(true)
         }
 
+        function handleRemove(){
+            removeRecipe(idDrink)
+        }
+
         useEffect(()=> {
-            toggle &&
+            toggle === true &&
                 saveRecipe(idDrink)
        }, [toggle])
 
@@ -77,7 +81,7 @@ function RecipeCard(props){
                     </ul>
                         {props.save && <button className="recipeCard--save" style={{alignSelf:"flex-start", justifyContent:"flex-start"}}><img src="https://cdn3.iconfinder.com/data/icons/carbon-mobile-browser/48/add-favorites-512.png" alt="favIcon"  id={idDrink} onClick={toggleSave}  style={{backgroundColor:toggle && "yellow"}}/></button>}
 
-                        {props.remove &&  <button className="recipeCard--remove" style={{alignSelf:"flex-end", justifyContent:"flex-end"}}  ><img src="https://th.bing.com/th/id/R.28c8fb93b3748e16c0878c0e71efb2f3?rik=2FMOW%2fbqVBmtag&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_304350.png&ehk=IkC6YMie%2f2uam4UNx5qnfUcw9L06EwYBCSCPjctwnf4%3d&risl=&pid=ImgRaw&r=0" alt="delete" id={idDrink} onClick={removeRecipe}/></button>}
+                        {props.remove &&  <button className="recipeCard--remove" style={{alignSelf:"flex-end", justifyContent:"flex-end"}}  ><img src="https://th.bing.com/th/id/R.28c8fb93b3748e16c0878c0e71efb2f3?rik=2FMOW%2fbqVBmtag&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_304350.png&ehk=IkC6YMie%2f2uam4UNx5qnfUcw9L06EwYBCSCPjctwnf4%3d&risl=&pid=ImgRaw&r=0" alt="delete" id={idDrink} onClick={handleRemove}/></button>}
                 </div>
             </div>
         )

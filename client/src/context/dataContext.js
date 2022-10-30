@@ -96,13 +96,8 @@ function DataContextProvider(props){
         lookup(id)
     }
 
-    function removeRecipe(event){
-        const id = event.target.id
-        const index = recipeList.findIndex(object => object.idDrink === id)
-        recipeList.length > 1 ?
-        setRecipeList(() => recipeList.splice(index, 1))
-        :
-        setRecipeList([])
+    function removeRecipe(id){
+        setRecipeList(recipeList.filter(drinks => drinks.idDrink !== id))
     }
 
     useEffect(()=>{
