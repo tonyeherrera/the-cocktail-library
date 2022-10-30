@@ -36,7 +36,7 @@ function AgeVerification(){
             navigate("/sorry")
         }else{
             setVerification(true)
-            navigate('home')
+            navigate('/')
         }
     }
 

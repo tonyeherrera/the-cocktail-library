@@ -17,7 +17,6 @@ function Home(){
                 <h4>Wanna try something new? Click on the recipe below!</h4>
                 {random === "" ? <></> : random.drinks.map(drink => <RecipeCard 
                     key={drink.idDrink}
-                    path="home"
                     {...drink}
                     save={saveRecipe} 
                 />)}

@@ -61,7 +61,7 @@ function RecipeCard(props){
         useEffect(()=> {
             toggle &&
                 saveRecipe(idDrink)
-       }, [toggle, saveRecipe, idDrink])
+       }, [toggle])
 
         return(
             <div className="recipeCard">
