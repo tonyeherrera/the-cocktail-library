@@ -10,7 +10,7 @@ function RecipeCard(props){
    
    
    
-   const {saveRecipe, removeRecipe, recipeList, updateRecipeList} = useContext(DataContext)
+   const {saveRecipe, removeRecipe} = useContext(DataContext)
    const {
         idDrink,
         strDrinkThumb,
@@ -61,7 +61,7 @@ function RecipeCard(props){
         useEffect(()=> {
             toggle &&
                 saveRecipe(idDrink)
-       }, [toggle])
+       }, [toggle, saveRecipe, idDrink])
 
         return(
             <div className="recipeCard">
