@@ -37,5 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "htps://localhost:9000"
+  "proxy": "https://localhost:9000"
 }

@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from "react"
 import {useParams} from "react-router-dom"
-import {DataContext} from "./dataContext"
+import {DataContext} from "../context/dataContext"
 
 function RecipeDetails(props){
 

@@ -1,6 +1,6 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
 import {useNavigate} from "react-router-dom"
-// import { DataContext } from "./dataContext"
+import { DataContext } from "../context/dataContext"
 
 
 function AgeVerification(){
@@ -11,7 +11,7 @@ function AgeVerification(){
         year:""})
 
     const navigate = useNavigate()
-    // const {verification, setVerification} = useContext(DataContext)
+    const {setVerification} = useContext(DataContext)
 
     function handleChange(event){
         const {name, value} = event.target
@@ -25,18 +25,18 @@ function AgeVerification(){
 
     function handleSubmit(e){
         e.preventDefault()
-        const userDOB = DOB.month + "-" + DOB.day + "-" + DOB.year
+        const userDOB = DOB.month + "/" + DOB.day + "/" + DOB.year
         const userDOBMill = Date.parse(userDOB)
         console.log(userDOBMill)
         console.log(Date.now())
-        const age = Math.floor((Date.now() - userDOBMill)/31104000000)
+        const age = Math.floor((Date.now() - userDOBMill)/31556952000)
         console.log(age)
         if(age < 21 || !age){
-            // setVerification(false)
+            setVerification(false)
             navigate("/sorry")
         }else{
-            // setVerification(true)
-            navigate('/home')
+            setVerification(true)
+            navigate('home')
         }
     }
 

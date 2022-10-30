@@ -1,9 +1,11 @@
 import React, {useState, useEffect, useCallback} from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const DataContext = React.createContext()
 
 function DataContextProvider(props){
+    const navigate = useNavigate()
     const [random, setRandom] = useState(
         { "drinks": [
         {
@@ -27,7 +29,7 @@ function DataContextProvider(props){
 
 
     const [params, setParams] = useState({category:"default",keyword:""})
-    const [searchResults, setSearchResults] = useState("")
+    const [searchResults, setSearchResults] = useState([])
     // search key: 
     //     name = s
     //     ingredient = i
@@ -61,7 +63,11 @@ function DataContextProvider(props){
 
     function search(userInput){
         axios.get(`https://www.thecocktaildb.com/api/json/v1/1/${navPath}.php?${navKey}=${userInput.keyword}`)
-            .then(response => setSearchResults(response.data))
+            .then(response => {
+                setSearchResults(response.data.drinks)
+                console.log(response.data.drinks)
+            }
+            )
             .catch(error => console.log(error))
     }
 
@@ -73,6 +79,11 @@ function DataContextProvider(props){
         .catch(error => console.log(error))
     }
 
+    function updateRecipeList(id){
+        recipeList && recipeList.some(drink => drink.idDrink === id) &&
+        setRecipeList(prevList => prevList.filter(drink => drink.idDrink !== id))
+    }
+
     const [recipe, setRecipe] = useState({})
 
     const details = useCallback(selected => {
@@ -80,16 +91,18 @@ function DataContextProvider(props){
         .then(response => setRecipe(response.data.drinks[0]))
     },[])
 
-    function saveRecipe(event){
-        const id = event.target.id
+    function saveRecipe(id){ 
         console.log(id)
         lookup(id)
     }
 
     function removeRecipe(event){
         const id = event.target.id
-        console.log(id)
-        setRecipeList(() => recipeList.filter(item => item.idDrink !== id))
+        const index = recipeList.findIndex(object => object.idDrink === id)
+        recipeList.length > 1 ?
+        setRecipeList(() => recipeList.splice(index, 1))
+        :
+        setRecipeList([])
     }
 
     useEffect(()=>{
@@ -101,17 +114,19 @@ function DataContextProvider(props){
         console.log(recipeList)
     }, [recipeList])
 
-    // const [verification, setVerification] = useState([])
+    const [verification, setVerification] = useState(false)
 
-    // useEffect(()=>{
-    //     sessionStorage && setVerification(JSON.parse(sessionStorage.getItem('verification')))
-    // }, [])
+    useEffect(()=>{
+        sessionStorage && setVerification(JSON.parse(sessionStorage.getItem('verification')))
+    }, [])
 
-    // useEffect(() => {
-    //     sessionStorage.setItem('verification', JSON.stringify(verification))
-    //     console.log(verification)
-    // }, verification)
+    useEffect(() => {
+        sessionStorage.setItem('verification', JSON.stringify(verification))
+    }, [verification])
 
+    function redirect(){
+        verification !== true && navigate("/")
+    }
     
 
 
@@ -132,6 +147,10 @@ function DataContextProvider(props){
             saveRecipe,
             recipeList,
             removeRecipe,
+            verification,
+            setVerification,
+            redirect,
+            updateRecipeList
         }}>
             {props.children}
         </DataContext.Provider>

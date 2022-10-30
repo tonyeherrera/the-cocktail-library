@@ -1,5 +1,5 @@
 import React, {useContext} from "react"
-import {DataContext} from "./dataContext"
+import {DataContext} from "../context/dataContext"
 
 function SearchForm(props){
 

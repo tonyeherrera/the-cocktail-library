@@ -1,34 +1,70 @@
-import React from "react"
+import React, {useContext} from "react"
 import {Routes, Route} from "react-router-dom"
-import {DataContextProvider} from "./dataContext"
-import Home from "./Home"
-import AgeVerification from "./AgeVerification"
-import Search from "./Search"
-import Saved from "./Saved"
-import Nav from "./Nav"
-import Footer from "./Footer"
-import RecipeDetails from "./RecipeDetails"
-import Sorry from "./Sorry"
-
+import {DataContext} from "./context/dataContext"
+import Home from "./components/Home"
+import AgeVerification from "./components/AgeVerification"
+import Search from "./components/Search"
+import Saved from "./components/Saved"
+import Nav from "./components/Nav"
+import Footer from "./components/Footer"
+import RecipeDetails from "./components/RecipeDetails"
+import Sorry from "./components/Sorry"
+import LibraryCard from "./components/LibraryCard"
+// import AgeProtectedRoute from "./AgeProtectedRoute"
 
 function App(props) {
+
+  const {verification} = useContext(DataContext)
+
   return (
     <>
-      <DataContextProvider>
         <Nav />
         <div className="content">
         <Routes>
-          <Route path="/" element = {<AgeVerification/>}/>
-          <Route path='sorry' element = {<Sorry/>}/>
-          <Route path="home" element = {<Home />}/>
-          {/* <Route path="about" element = {<About />}/> */}
-          <Route path="search" element = {<Search />}/>
-          <Route path="saved" element = {<Saved />}/>
-          <Route path="/recipe/:idDrink" element={<RecipeDetails />} />
+          <Route path="/" element = {!verification ? <AgeVerification/> : <Home />}/>
+          <Route path="sorry" element = {!verification && <Sorry />}/>
+          {/* <Route path="/"
+            element = {
+              <AgeProtectedRoute verification={verification} redirectTo="/">
+                <Home />
+              </AgeProtectedRoute>
+            }
+          /> */}
+          {/* <Route path="search"
+            element = {
+              <AgeProtectedRoute verification={verification} redirectTo="/">
+                <Search />
+              </AgeProtectedRoute>
+            }
+          />
+          <Route path="saved"
+            element = {
+              <AgeProtectedRoute verification={verification} redirectTo="/">
+                <Saved />
+              </AgeProtectedRoute>
+            }
+          />
+          <Route path="/reccipe/:idDrink"
+            element = {
+              <AgeProtectedRoute verification={verification} redirectTo="/">
+                <RecipeDetails />
+              </AgeProtectedRoute>
+            }
+          />
+          <Route path="library-card"
+            element = {
+              <AgeProtectedRoute verification={verification} redirectTo="/">
+                <LibraryCard />
+              </AgeProtectedRoute>
+            }
+          /> */}
+            <Route path="search" element = {!verification ? <AgeVerification/> : <Search />}/>
+            <Route path="saved" element = {!verification ? <AgeVerification/> : <Saved />}/>
+            <Route path="/recipe/:idDrink" element= {!verification ? <AgeVerification/> : <RecipeDetails />} />
+            <Route path="library-card" element= {!verification ? <AgeVerification/> : <LibraryCard />} />
         </Routes>
         </div>
         <Footer />
-      </DataContextProvider>
     </>
   );
 }
