@@ -1,12 +1,14 @@
 import React, {useContext, useState} from "react"
 import {Link, useNavigate} from "react-router-dom"
 import {DataContext} from "../context/dataContext"
+import {UserContext} from "../context/userContext"
 // import logo from "./logo(2).png"
 
 
 function Nav(){
 
-    const {verification, token, logout} = useContext(DataContext)
+    const {verification} = useContext(DataContext)
+    const {token, logout} = useContext(UserContext)
     const navigate = useNavigate()
     const [menuClick, setMenuClick] = useState(false)
 
