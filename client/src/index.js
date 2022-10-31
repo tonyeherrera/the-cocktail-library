@@ -5,13 +5,16 @@ import './styles.css';
 import App from './App';
 import reportWebVitals from './components/reportWebVitals';
 import { DataContextProvider } from './context/dataContext';
+import { UserContextProvider } from './context/userContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  
     <Router>
        <DataContextProvider>
-        <App />
+        <UserContextProvider>
+          <App />
+        </UserContextProvider>
       </DataContextProvider>
     </Router>
   

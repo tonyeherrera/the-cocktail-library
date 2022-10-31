@@ -10,7 +10,7 @@ const {expressjwt} = require('express-jwt')
 app.use(express.json())
 app.use(morgan("dev"))
 
-mongoose.connect(`mongodb+srv://tonyeherrera:${process.env.MONGOPASSWORD}@cluster0.v8uoayq.mongodb.net/?retryWrites=true&w=majority`, ()=> console.log("Connected to DB"))
+mongoose.connect(`mongodb+srv://tonyeherrera:${process.env.MONGOPASSWORD}@cluster0.v8uoayq.mongodb.net/The-Cocktail-Library?retryWrites=true&w=majority`, ()=> console.log("Connected to DB"))
 
 app.use('/auth', require('./routes/authRouter.js'))
 app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256']}))
