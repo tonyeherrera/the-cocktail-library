@@ -1,13 +1,13 @@
 import React, {useContext, useState} from "react"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import {DataContext} from "../context/dataContext"
 // import logo from "./logo(2).png"
 
 
 function Nav(){
 
-    const {verification} = useContext(DataContext)
-
+    const {verification, token, logout} = useContext(DataContext)
+    const navigate = useNavigate()
     const [menuClick, setMenuClick] = useState(false)
 
     function openNav() {
@@ -19,6 +19,10 @@ function Nav(){
       function closeNav() {
         document.getElementById("myNav").style.width = "0%";
         setMenuClick(false)
+      }
+
+      function navLogin(){
+        navigate('/library-card')
       }
 
 
@@ -39,6 +43,7 @@ function Nav(){
                             <Link to="library-card" style={{textDecoration:'none'}} onClick={closeNav}>Library Card</Link>
                         </nav>
                     </div>
+                    <button onClick={token ? logout : navLogin} style={{marginLeft:"350px"}}>{token ? "Logout" : "Login" }</button>
                     <button onClick={menuClick ? closeNav : openNav} id="menu"><img src="https://th.bing.com/th/id/OIP.8SVagWcPVq64blbs65KoVgHaHk?w=191&h=195&c=7&r=0&o=5&dpr=1.3&pid=1.7" id="menu--image" alt="menu"></img></button>
                 </>
             }
