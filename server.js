@@ -13,6 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 process.env.MONGOURI
 process.env.SECRET
 
+app.use(express.static("./client/build"))
 app.use(express.json())
 app.use(morgan("dev"))
 
@@ -44,3 +45,4 @@ if (process.env.NODE_ENV === 'production') {
     })
   }
   
+  module.exports = the-cocktail-library
