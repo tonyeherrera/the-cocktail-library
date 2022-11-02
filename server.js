@@ -1,6 +1,5 @@
 const express = require("express")
 const app = express()
-require("dotenv").config()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 const {expressjwt} = require('express-jwt')
@@ -11,13 +10,13 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config({path: __dirname+'/.env'});
 }
 
-process.env.MONGOURI
+
 process.env.SECRET
 
 app.use(express.json())
 app.use(morgan("dev"))
 
-mongoose.connect("mongodb+srv://tonyeherrera:SakApFet1!@cluster0.v8uoayq.mongodb.net/The-Cocktail-Library?retryWrites=true&w=majority", ()=> console.log("Connected to DB"))
+mongoose.connect(process.env.MONGOURI, ()=> console.log("Connected to DB"))
 
 app.use('/auth', require(path.join(__dirname,'routes','authRouter.js')))
 app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256']}))
