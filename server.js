@@ -11,7 +11,7 @@ const {expressjwt} = require('express-jwt')
 app.use(express.json())
 app.use(morgan("dev"))
 
-mongoose.connect(`mongodb+srv://vercel-admin-user:Di0qZpJUjiiU5sz4@cluster0.v8uoayq.mongodb.net/The-Cocktail-Library?retryWrites=true&w=majority`, ()=> console.log("Connected to DB"))
+mongoose.connect(`mongodb+srv://tonyeherrera:${process.env.MONGOPASSWORD}@cluster0.v8uoayq.mongodb.net/The-Cocktail-Library?retryWrites=true&w=majority`, ()=> console.log("Connected to DB"))
 
 app.use('/auth', require('./routes/authRouter.js'))
 app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256']}))
@@ -26,6 +26,8 @@ app.use((err, req, res, next) => {
     return res.send({errMSG: err.message})
 })
 
-// app.listen(process.env.FIXIE_URL, () => {
-//     console.log('Server is running on local port 9000')
-// })
+const port = process.env.PORT || 9000
+
+app.listen(port, () => {
+    console.log('Server is running on local port 9000')
+})
