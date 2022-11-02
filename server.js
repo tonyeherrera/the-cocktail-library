@@ -17,7 +17,7 @@ process.env.SECRET
 app.use(express.json())
 app.use(morgan("dev"))
 
-mongoose.connect(process.env.MONGOURI, ()=> console.log("Connected to DB"))
+mongoose.connect("mongodb+srv://tonyeherrera:SakApFet1!@cluster0.v8uoayq.mongodb.net/The-Cocktail-Library?retryWrites=true&w=majority", ()=> console.log("Connected to DB"))
 
 app.use('/auth', require(path.join(__dirname,'routes','authRouter.js')))
 app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256']}))
@@ -39,9 +39,9 @@ app.listen(port, () => {
 })
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, './client', 'build')));
+    app.use(express.static(path.join(__dirname, 'client', 'build')));
     app.get('/*', (req, res) => {
-      res.sendFile(path.join(__dirname, './client', 'build', 'index.html'));
+      res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
     })
   }
   
