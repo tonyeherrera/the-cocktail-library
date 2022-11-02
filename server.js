@@ -45,4 +45,3 @@ if (process.env.NODE_ENV === 'production') {
     })
   }
   
-  module.exports = the-cocktail-library
