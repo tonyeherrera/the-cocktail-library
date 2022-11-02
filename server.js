@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config({path: __dirname+'/.env'});
 }
 
-
+process.env.MONGOURI
 process.env.SECRET
 
 app.use(express.json())
