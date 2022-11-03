@@ -5,7 +5,7 @@
       { "src": "server.js", "use": "@vercel/node" },
       { "src": "/client/build/index.html", "use": "@vercel/static" }
     ],
-    "rewrite": [
+    "src": [
       { "source": "/(.*)", "destination": "/server.js" }
     ]
   }
