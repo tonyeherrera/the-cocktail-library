@@ -5,7 +5,11 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "vercel-postbuild":"cd client && npm instal && npm run build"
+  },
+  "engines":{
+    "node":"16.14.2"
   },
   "repository": {
     "type": "git",
