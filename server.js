@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI, ()=> console.log("Connected to DB"))
 const secret = process.env.SECRET || "some some secret"
 
 app.use('/auth', require(path.join(__dirname,'routes','authRouter.js')))
-app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256']}))
+app.use('/api', expressjwt({ secret, algorithms: ['HS256']}))
 app.use('/api/userDrinks', require(path.join(__dirname,'routes','userDrinksRouter.js')))
 
 
