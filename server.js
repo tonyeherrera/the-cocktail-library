@@ -6,18 +6,16 @@ const {expressjwt} = require('express-jwt')
 const path = require("path")
 const process = require("process");
 
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config({path: __dirname+'/.env'});
-}
-
-process.env.MONGOURI
-process.env.SECRET
+require("dotevn").config
 
 app.use(express.static("./client/build"))
 app.use(express.json())
 app.use(morgan("dev"))
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-mongoose.connect(process.env.MONGOURI, ()=> console.log("Connected to DB"))
+mongoose.connect(process.env.MONGODB_URI, ()=> console.log("Connected to DB"))
+
+const secret = process.env.SECRET || "some some secret"
 
 app.use('/auth', require(path.join(__dirname,'routes','authRouter.js')))
 app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256']}))
@@ -32,16 +30,15 @@ app.use((err, req, res, next) => {
     return res.send({errMSG: err.message})
 })
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+})
+
 const port = process.env.PORT || 9000
 
 app.listen(port, () => {
     console.log('Server is running on local port 9000')
 })
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client', 'build')));
-    app.get('/*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-    })
-  }
+
   
