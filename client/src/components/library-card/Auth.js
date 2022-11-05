@@ -13,7 +13,8 @@ function Auth (props){
         const {name, value} = e.target
         setInputs(prevInputs => ({
             ...prevInputs, 
-            [name]: value
+            [name]: value,
+            memberSince:Date.now()
         }))
     }
 
@@ -43,6 +44,7 @@ function Auth (props){
                     inputs={inputs}
                     btnText="Login"
                     errMsg={errMsg}
+                    toggle={toggle}
                 />
                 <p onClick = {toggleForm}>Not a member?</p>
             </>
@@ -54,6 +56,7 @@ function Auth (props){
                         inputs={inputs}
                         btnText="Sign Up"
                         errMsg={errMsg}
+                        toggle={toggle}
                     />
                     <p onClick= {toggleForm}>Already a member?</p>
                 </>

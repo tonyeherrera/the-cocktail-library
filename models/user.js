@@ -15,6 +15,14 @@ const userSchema = new Schema({
     memberSince:{
         type: Date,
         default: Date.Now
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    dob:{
+        type:Date,
+        required:true
     }
 
 })

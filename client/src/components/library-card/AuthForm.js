@@ -8,8 +8,11 @@ function AuthForm(props){
         errMsg, 
         inputs:{
             username,
-            password
-        }
+            password,
+            email,
+            dob
+        },
+        toggle
     } = props
 
     return (
@@ -27,6 +30,24 @@ function AuthForm(props){
                 onChange={handleChange}
                 placeholder="Password" 
             />
+           { toggle &&
+            <input 
+                    type="email"
+                    value={email}
+                    name="email"
+                    onChange={handleChange}
+                    placeholder="Email Address"
+                />
+           }
+           { toggle &&
+                <input 
+                    type="date"
+                    value={dob}
+                    name="dob"
+                    onChange={handleChange}
+                    placeholder="Date of Birth"
+                />
+           }
             <p style={{color:"red"}}>{errMsg}</p>
             <button>{ btnText }</button>
         </form>
