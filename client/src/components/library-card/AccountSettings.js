@@ -4,9 +4,7 @@ import {UserContext} from "../../context/userContext"
 function AccountSettings(){
     
     const {user, editAccount} = useContext(UserContext)
-    const {username, memberSince, email, dob, password, _id} = user
-
-    console.log(_id)
+    const {username, memberSince, email, emailUpdates, dob, password, _id} = user
 
     const begining = new Date(memberSince).toDateString()
     const DateOfBirth = new Date(dob).toDateString()
@@ -17,9 +15,9 @@ function AccountSettings(){
     const [pwBtnText, setPwBtnText] = useState("Update Password")
     const [pwSubmitText, setPwSubmitText] = useState("Submit New Password")
     const [inputs, setInputs] = useState({
-        username: "",
-        email:"",
-        emailUpdates:false
+        username: username || '',
+        email: email || '',
+        emailUpdates: emailUpdates || false
     })
     const [passwords, setPasswords] = useState({
         oldPassword:"",
@@ -46,7 +44,7 @@ function AccountSettings(){
         e.preventDefault()
         setToggle(prev => !prev)
         setBtnText("Edit Info")
-        console.log(inputs)
+        editAccount(_id,inputs)
     }
 
     function togglePasswordEdit(){
@@ -80,7 +78,6 @@ function AccountSettings(){
     function submitNewPassword(e){
         e.preventDefault()
         editAccount(_id, {password:passwords.password})
-        console.log({password:passwords.password})
         setPwToggle(prev => !prev)
         setPwBtnText("Update Password")
         setPwSubmitText("Submit New Password") 
@@ -97,7 +94,7 @@ function AccountSettings(){
                 </>
             :
                 <form onSubmit={handleSubmit}>
-                    <input name="username" value={inputs.username} placeholder={username} onChange={handleChange}/>
+                    {/* <input name="username" value={inputs.username} placeholder={username} onChange={handleChange}/> */}
                     <input name="email" value={inputs.email} placeholder={email} onChange={handleChange}/>
                     <label>
                         <input name="emailUpdates" onChange={handleChange} checked={inputs.emailUpdates} type="checkbox"/>Subscribe to email updates

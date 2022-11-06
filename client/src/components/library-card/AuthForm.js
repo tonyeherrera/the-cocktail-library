@@ -10,10 +10,13 @@ function AuthForm(props){
             username,
             password,
             email,
-            dob
+            dob,
+            emailUpdates
         },
         toggle
     } = props
+
+    {errMsg && console.log(errMsg)}
 
     return (
         <form onSubmit={handleSubmit}>
@@ -31,25 +34,28 @@ function AuthForm(props){
                 placeholder="Password" 
             />
            { toggle &&
-            <input 
-                    type="email"
-                    value={email}
-                    name="email"
-                    onChange={handleChange}
-                    placeholder="Email Address"
-                />
+                <>
+                    <input 
+                        type="email"
+                        value={email}
+                        name="email"
+                        onChange={handleChange}
+                        placeholder="Email Address"
+                    />
+                    <input 
+                        type="date"
+                        value={dob}
+                        name="dob"
+                        onChange={handleChange}
+                        placeholder="Date of Birth"
+                    />
+                    <label>
+                        <input name="emailUpdates" onChange={handleChange} checked={emailUpdates} type="checkbox"/>Subscribe to email updates
+                    </label>
+                </>
            }
-           { toggle &&
-                <input 
-                    type="date"
-                    value={dob}
-                    name="dob"
-                    onChange={handleChange}
-                    placeholder="Date of Birth"
-                />
-           }
-            <p style={{color:"red"}}>{errMsg}</p>
             <button>{ btnText }</button>
+            {errMsg && <p style={{color:"red"}}>{errMsg}</p>}
         </form>
     )
 }

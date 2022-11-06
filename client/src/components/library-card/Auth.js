@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom"
 import AuthForm from "./AuthForm.js"
 import {DataContext} from "../../context/dataContext"
 
-const initInputs = {username: "", password: ""}
+const initInputs = {username: "", password: "", email: "", dob: "", emailUpdates: false}
 
 
 function Auth (props){
@@ -15,12 +15,13 @@ function Auth (props){
     const navigate = useNavigate()
 
     function handleChange(e){
-        const {name, value} = e.target
+        const {name, value, type, checked} = e.target
         setInputs(prevInputs => ({
             ...prevInputs, 
-            [name]: value,
+            [name]: type === "checkbox" ? checked : value,
             memberSince:Date.now()
         }))
+        resetAuthErr()
     }
 
     function handleSignup(e){

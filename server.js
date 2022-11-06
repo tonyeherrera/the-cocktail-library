@@ -22,12 +22,13 @@ app.use('/api', expressjwt({ secret, algorithms: ['HS256']}))
 app.use('/api/userDrinks', require(path.join(__dirname,'routes','userDrinksRouter.js')))
 
 
+
 app.use((err, req, res, next) => {
     console.log(err)
     if(err.name === "UnauthorizedError"){
         res.status(err.status)
     }
-    return res.send({errMSG: err.message})
+    return res.send({errMsg: err.message})
 })
 
 app.get('*', (req, res) => {

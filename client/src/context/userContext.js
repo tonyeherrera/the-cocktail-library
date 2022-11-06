@@ -81,7 +81,9 @@ function UserContextProvider(props){
 
     function editAccount(id,update){
         userAxios.put(`/auth/${id}`, update)
-            .then(res => console.log(res.data))
+            .then(res => {
+                login(res.data)
+            })
             .catch(err => console.log(err))
     }
 

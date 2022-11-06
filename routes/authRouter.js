@@ -44,7 +44,7 @@ authRouter.post("/login", (req, res, next) => {
         })
 })
 
-authRouter.put('/auth/:userId', (req, res, next) => {
+authRouter.put('/:userId', (req, res, next) => {
     User.findOneAndUpdate(
         {_id: req.params.userId},
         req.body,
