@@ -111,11 +111,9 @@ function UserContextProvider(props){
             .catch(err => console.log(err))
     }
 
-    useEffect((token)=>{
-        { token &&    
+    useEffect((token)=>{  
            getPublicDrinks()
-        }
-        }, [])
+    }, [])
     
 
     return(

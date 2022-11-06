@@ -84,7 +84,7 @@ function AccountSettings(){
     }
 
     return(
-        <div>
+        <div style={{marginTop:"100px"}}>
             {!toggle ?
                 <>
                     <h1>Username: {username}</h1>

@@ -66,12 +66,15 @@ function SubmissionForm(){
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                <input name="strDrink" value={inputs.strDrink} placeholder="Drink Name" onChange={handleChange}/>
-                {/* <input name="description" value={inputs.descriptionDrink}/> */}
-                <label>
-                    <input name="strAlcoholic" type="checkbox" checked={inputs.strAlcoholic} onChange={handleChange}/>
-                    Is this drink Alcoholic?
-                </label>
+                <div style={{marginTop:"200px", marginBottom:'20px'}}>
+                    <input name="strDrink" value={inputs.strDrink} placeholder="Drink Name" onChange={handleChange} style={{marginRight:"20px"}}/>
+                    {/* <input name="description" value={inputs.descriptionDrink}/> */}
+                    <label>
+                        <input name="strAlcoholic" type="checkbox" checked={inputs.strAlcoholic} onChange={handleChange} style={{marginRight:"20px"}} />
+                        Is this drink Alcoholic?
+                    </label>
+                    <input name="strDrink" value={inputs.strDrinkThumb} placeholder="Image Url" onChange={handleChange}/>
+                </div>
                 <button>Submit</button>
             </form>
         </div>
