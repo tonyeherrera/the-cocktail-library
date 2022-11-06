@@ -30,7 +30,9 @@ function RecipeCard(props){
         strIngredient12,
         strIngredient13,
         strIngredient14,
-        strIngredient15
+        strIngredient15,
+        author,
+        user
         } = drink
 
     const ingredientArr = [
@@ -72,6 +74,7 @@ function RecipeCard(props){
                 <Link to={`/recipe/${idDrink}`} style={{textDecoration:"none"}}>
                     <img src={strDrinkThumb} className="recipeCard--img" alt="drink thumbnail"/>
                 </Link>
+                {author && <p>{author}</p>}
                 <div className="recipeCard--details">
                     <h2 style={{margin:"0", fontSize:"15px"}}>{strDrink}</h2>
                     {strAlcoholic && <p style={{margin:"0", fontSize:"12px"}}>{strAlcoholic && strAlcoholic === "Alcoholic" ? "Contains Alcohol":"Non-Alcoholic"}</p>}

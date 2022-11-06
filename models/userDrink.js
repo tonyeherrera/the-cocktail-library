@@ -17,8 +17,7 @@ const userDrinkSchema = new Schema({
             type: String
         },
         strIngredient1:{
-            type: String,
-            required: true,
+            type: String
         },
         strIngredient2: {
             type: String
@@ -64,11 +63,9 @@ const userDrinkSchema = new Schema({
         },
         strInstructions: {
             type: String,
-            required: true
         },
         strMeasure1: {
-            type: String,
-            required: true
+            type: String
         },
         strMeasure2: {
             type: String

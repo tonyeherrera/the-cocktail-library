@@ -87,6 +87,14 @@ function UserContextProvider(props){
             .catch(err => console.log(err))
     }
 
+    function addUserDrink(newDrink){
+        userAxios.post('/api/userDrinks', newDrink)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+
     return(
         <UserContext.Provider
             value={{
@@ -95,7 +103,8 @@ function UserContextProvider(props){
                 login,
                 logout,
                 resetAuthErr,
-                editAccount
+                editAccount,
+                addUserDrink
             }}>
             {props.children}
         </UserContext.Provider>
