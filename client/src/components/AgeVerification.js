@@ -1,17 +1,26 @@
-import React, {useState, useContext} from "react"
+import React, {useState, useContext, useEffect} from "react"
 import {useNavigate} from "react-router-dom"
 import { DataContext } from "../context/dataContext"
+import { UserContext } from "../context/userContext"
 
 
 function AgeVerification(){
+
+    const navigate = useNavigate()
+    const {setVerification, verification} = useContext(DataContext)
+    const {token} = useContext(UserContext)
 
     const [DOB, setDOB] = useState({
         month:"",
         day:"",
         year:""})
 
-    const navigate = useNavigate()
-    const {setVerification} = useContext(DataContext)
+    function tokenVerification(){
+        if(token){
+            console.log("checked for token")
+            setVerification(true)
+        }
+    }
 
     function handleChange(event){
         const {name, value} = event.target
@@ -41,6 +50,11 @@ function AgeVerification(){
     }
 
     const maxYear = new Date().getFullYear()
+
+    useEffect(() => {
+        tokenVerification()
+        console.log(verification)
+    }, [token, verification])
 
         return(
             <div>

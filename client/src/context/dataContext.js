@@ -113,7 +113,7 @@ function DataContextProvider(props){
 
     useEffect(()=>{
         sessionStorage && setVerification(JSON.parse(sessionStorage.getItem('verification')))
-    }, [])
+    }, [sessionStorage])
 
     useEffect(() => {
         sessionStorage.setItem('verification', JSON.stringify(verification))

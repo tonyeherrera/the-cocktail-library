@@ -27,6 +27,7 @@ function UserContextProvider(props){
                 const {user, token} = res.data
                 localStorage.setItem("token",token)
                 localStorage.setItem("user", JSON.stringify(user))
+                sessionStorage.setItem("verification", true)
                 setUserState( prevUserState => ({
                     ...prevUserState,
                     user, 
@@ -42,6 +43,7 @@ function UserContextProvider(props){
                 const {user, token} = res.data
                 localStorage.setItem("token",token)
                 localStorage.setItem("user", JSON.stringify(user))
+                sessionStorage.setItem("verification", true)
                 setUserState( prevUserState => ({
                     ...prevUserState,
                     user, 
@@ -54,6 +56,7 @@ function UserContextProvider(props){
     function logout(){
         localStorage.removeItem("token")
         localStorage.removeItem("user")
+        sessionStorage.setItem("verification", false)
         setUserState({
                 user: {},
                 token: "",

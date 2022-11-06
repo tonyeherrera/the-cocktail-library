@@ -1,5 +1,7 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
+import {useNavigate} from "react-router-dom"
 import AuthForm from "./AuthForm.js"
+import {DataContext} from "../../context/dataContext"
 
 const initInputs = {username: "", password: ""}
 
@@ -8,6 +10,9 @@ function Auth (props){
     const {signup, login, errMsg, resetAuthErr} = props
     const [inputs, setInputs] = useState(initInputs)
     const [toggle, setToggle] = useState(false)
+    const {setVerification} = useContext(DataContext)
+
+    const navigate = useNavigate()
 
     function handleChange(e){
         const {name, value} = e.target
@@ -20,7 +25,12 @@ function Auth (props){
 
     function handleSignup(e){
         e.preventDefault()
+        const age = Math.floor((Date.now() - inputs.dob)/31556952000) 
+        age < 21 ? 
+        navigate("/sorry")
+        :
         signup(inputs)
+        setVerification(true)
     }
 
     function handleLogin(e){

@@ -17,14 +17,15 @@ const userSchema = new Schema({
         default: Date.Now
     },
     email:{
-        type:String,
-        required:true
+        type: String
     },
     dob:{
         type:Date,
         required:true
+    },
+    emailUpdates:{
+        type: Boolean
     }
-
 })
 
 module.exports = mongoose.model(`User`, userSchema)

@@ -36,7 +36,7 @@ function App(props) {
             <Route path="search" element = {!verification ? <AgeVerification/> : <Search />}/>
             <Route path="saved" element = {!verification ? <AgeVerification/> : <Saved />}/>
             <Route path="/recipe/:idDrink" element= {!verification ? <AgeVerification/> : <RecipeDetails />} />
-            <Route path="library-card" element= {!verification ? <AgeVerification/> : <LibraryCard />} />
+            <Route path="library-card" element= {<LibraryCard />} />
             <Route path="library-card/dashboard" element= {!token ? <LibraryCard /> : <Dashboard />} />
             <Route path="library-card/private-library" element= {!token ? <LibraryCard /> : <PrivateLibrary />} />
             <Route path="library-card/public-library" element= {!token ? <LibraryCard /> : <PublicLibrary />} />
