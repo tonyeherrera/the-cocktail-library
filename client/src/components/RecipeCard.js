@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from "react"
 import {Link} from "react-router-dom"
 import {DataContext} from "../context/dataContext"
+import {UserContext} from '../context/userContext'
 
 
 function RecipeCard(props){
@@ -8,9 +9,8 @@ function RecipeCard(props){
     const {save, ...drink} = props
     const [toggle, setToggle] = useState(false)
    
-   
-   
    const {saveRecipe, removeRecipe} = useContext(DataContext)
+   const {removeUserDrink} = useContext(UserContext)
    const {
         idDrink,
         strDrinkThumb,
@@ -61,6 +61,9 @@ function RecipeCard(props){
         }
 
         function handleRemove(){
+            author ?
+            removeUserDrink(drink._id)
+            :
             removeRecipe(idDrink)
         }
 

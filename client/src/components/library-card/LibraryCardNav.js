@@ -11,7 +11,7 @@ function LibraryCardNav(props){
         { token &&
                 <nav> 
                     <Link to="/library-card/dashboard">Dashboard</Link>
-                    <Link to="/library-card/private-library">Private Library</Link>
+                    {/* <Link to="/library-card/private-library">Private Library</Link> */}
                     <Link to="/library-card/public-library">Public Library</Link>
                     <Link to="/library-card/submission-form">Submit New Recipe</Link>
                     <Link to="/library-card/user-submissions">Your Submissions</Link>

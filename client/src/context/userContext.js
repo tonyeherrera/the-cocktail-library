@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import {useNavigate} from "react-router-dom"
 import axios from "axios"
 
@@ -20,6 +20,8 @@ function UserContextProvider(props){
     }
 
     const [userState, setUserState] = useState(initState)
+
+    const [publicDrinks, setPublicDrinks] = useState([])
 
     function signup(credentials){
         axios.post("/auth/signup", credentials)
@@ -87,13 +89,31 @@ function UserContextProvider(props){
             .catch(err => console.log(err))
     }
 
+    function getPublicDrinks(){
+        userAxios.get('/api/userDrinks')
+            .then(res => setPublicDrinks(res.data))
+            .catch(err => console.log(err))
+    }
+
+    function removeUserDrink(id){
+        userAxios.delete(`/api/userDrinks/${id}`)
+            .then(res => getPublicDrinks())
+            .catch(err => console.log(err))
+    }
+
     function addUserDrink(newDrink){
         userAxios.post('/api/userDrinks', newDrink)
             .then(res => {
-                console.log(res.data)
-            })
+                setPublicDrinks(prev => ([
+                    ...prev,
+                    res.data
+                ]))})
             .catch(err => console.log(err))
     }
+
+    useEffect(()=>{
+        getPublicDrinks()
+    }, [])
 
     return(
         <UserContext.Provider
@@ -104,7 +124,9 @@ function UserContextProvider(props){
                 logout,
                 resetAuthErr,
                 editAccount,
-                addUserDrink
+                addUserDrink,
+                publicDrinks,
+                removeUserDrink
             }}>
             {props.children}
         </UserContext.Provider>
