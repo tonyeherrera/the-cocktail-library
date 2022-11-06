@@ -32,7 +32,7 @@ function App(props) {
         <div className="content">
         <Routes>
           <Route path="/" element = {!verification ? <AgeVerification/> : <Home />}/>
-          <Route path="sorry" element = {!verification && <Sorry />}/>
+          <Route path="sorry" element = {<Sorry />}/>
             <Route path="search" element = {!verification ? <AgeVerification/> : <Search />}/>
             <Route path="saved" element = {!verification ? <AgeVerification/> : <Saved />}/>
             <Route path="/recipe/:idDrink" element= {!verification ? <AgeVerification/> : <RecipeDetails />} />

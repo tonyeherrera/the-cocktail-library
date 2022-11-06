@@ -3,8 +3,10 @@ import {UserContext} from "../../context/userContext"
 
 function AccountSettings(){
     
-    const {user} = useContext(UserContext)
-    const {username, memberSince, email, dob, password} = user
+    const {user, editAccount} = useContext(UserContext)
+    const {username, memberSince, email, dob, password, _id} = user
+
+    console.log(_id)
 
     const begining = new Date(memberSince).toDateString()
     const DateOfBirth = new Date(dob).toDateString()
@@ -36,7 +38,7 @@ function AccountSettings(){
         const {name, value, checked, type} = e.target
         setInputs(prevInputs => ({
             ...prevInputs, 
-            [name]: type === type ? checked : value
+            [name]: type === "checkbox" ? checked : value
         }))
     }
 
@@ -77,7 +79,8 @@ function AccountSettings(){
 
     function submitNewPassword(e){
         e.preventDefault()
-
+        editAccount(_id, {password:passwords.password})
+        console.log({password:passwords.password})
         setPwToggle(prev => !prev)
         setPwBtnText("Update Password")
         setPwSubmitText("Submit New Password") 

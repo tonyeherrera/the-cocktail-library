@@ -1,4 +1,5 @@
 import React, {useContext} from "react"
+import { useNavigate } from "react-router-dom"
 import {UserContext} from "../context/userContext"
 import {DataContext} from "../context/dataContext"
 import Menu from "./Menu"
@@ -7,15 +8,27 @@ import Menu from "./Menu"
 
 function Nav(){
 
-    const {verification} = useContext(DataContext)
+    const {verification, setVerification} = useContext(DataContext)
     const {token, logout} = useContext(UserContext)
-    
+    const navigate = useNavigate()
 
+    function logoutNow(){
+        setVerification(false)
+        logout()
+    }
+
+    function navLogin(){
+        navigate('/library-card')
+      }
+    
     return(
         <div className="navBar">
             {/* <img src={logo} height="40px" width="250px" id="logo" alt="Logo"/> */}
             <h2 id="logo">The Cocktail Library</h2>
-            <Menu verification={verification} token={token} logout={logout} />
+            <button onClick={token ? logoutNow : navLogin} style={{marginLeft:"350px"}}>{token ? "Logout" : "Login" }</button>
+            {verification &&
+                <Menu verification={verification} token={token} logout={logout} />
+            }
         </div>
     )
 }

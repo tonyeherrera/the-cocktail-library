@@ -25,7 +25,9 @@ function Auth (props){
 
     function handleSignup(e){
         e.preventDefault()
-        const age = Math.floor((Date.now() - inputs.dob)/31556952000) 
+        const thing = new Date(inputs.dob)
+        const age = Math.floor((Date.now() - thing)/31556952000) 
+        console.log(age)
         age < 21 ? 
         navigate("/sorry")
         :
@@ -36,6 +38,7 @@ function Auth (props){
     function handleLogin(e){
         e.preventDefault()
         login(inputs)
+        setVerification(true)
     }
 
     function toggleForm(){

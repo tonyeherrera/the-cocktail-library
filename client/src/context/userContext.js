@@ -3,9 +3,9 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios"
 
 const UserContext = React.createContext()
-const voterAxios = axios.create() 
+const userAxios = axios.create() 
 
-voterAxios.interceptors.request.use(config => {
+userAxios.interceptors.request.use(config => {
     const token = localStorage.getItem("token")
     config.headers.Authorization = `Bearer ${token}`
     return config
@@ -79,6 +79,12 @@ function UserContextProvider(props){
         }))
     }
 
+    function editAccount(id,update){
+        userAxios.put(`/auth/${id}`, update)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))
+    }
+
     return(
         <UserContext.Provider
             value={{
@@ -86,7 +92,8 @@ function UserContextProvider(props){
                 signup,
                 login,
                 logout,
-                resetAuthErr
+                resetAuthErr,
+                editAccount
             }}>
             {props.children}
         </UserContext.Provider>
