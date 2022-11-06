@@ -31,6 +31,7 @@ function RecipeCard(props){
         strIngredient13,
         strIngredient14,
         strIngredient15,
+        _id,
         author,
         user
         } = drink
@@ -74,7 +75,7 @@ function RecipeCard(props){
 
         return(
             <div className="recipeCard">
-                <Link to={`/recipe/${idDrink}`} style={{textDecoration:"none"}}>
+                <Link to={`/recipe/${_id ? _id : idDrink}`} style={{textDecoration:"none"}}>
                     <img src={strDrinkThumb} className="recipeCard--img" alt="drink thumbnail"/>
                 </Link>
                 {author && <p>{author}</p>}
