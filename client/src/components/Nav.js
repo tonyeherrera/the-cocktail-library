@@ -24,7 +24,7 @@ function Nav(){
     return(
         <div className="navBar">
             {/* <img src={logo} height="40px" width="250px" id="logo" alt="Logo"/> */}
-            <h2 id="logo">The Cocktail Library</h2>
+            <h2 id="logo"><a href="/" style={{textDecoration:"none"}}>The Cocktail Library</a></h2>
             <button onClick={token ? logoutNow : navLogin} style={{marginLeft:"350px"}}>{token ? "Logout" : "Login" }</button>
             {verification &&
                 <Menu verification={verification} token={token} logout={logout} />
