@@ -1,10 +1,13 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect} from "react"
 import {UserContext} from "../../context/userContext"
 import RecipeCard from "../RecipeCard"
 
 function PublicLibrary(){
 
-    const {publicDrinks} = useContext(UserContext)
+    const {publicDrinks, getPublicDrinks} = useContext(UserContext)
+    useEffect(()=>{
+        getPublicDrinks()
+    }, [])
     console.log(publicDrinks.length)
     
     return(

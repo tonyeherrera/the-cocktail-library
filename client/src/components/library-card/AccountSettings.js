@@ -110,7 +110,6 @@ function AccountSettings(){
                     <input name="confirmPassword" value={inputs.confirmPassword} placeholder="Confirm Password" onChange={handlePasswordChange}/>
                     <button>{pwSubmitText}</button>
                 </form>
-                
             }
             {pwToggle && passwordError !== "" && <p>{passwordError}</p>}
             {!pwToggle && <button onClick={toggleEdit} >{btnText}</button>}

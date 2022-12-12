@@ -127,6 +127,7 @@ function UserContextProvider(props){
                 editAccount,
                 addUserDrink,
                 publicDrinks,
+                getPublicDrinks,
                 removeUserDrink
             }}>
             {props.children}
