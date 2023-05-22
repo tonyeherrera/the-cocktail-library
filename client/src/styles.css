@@ -72,7 +72,7 @@ a:hover, a:focus {
 
 
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
-@media screen and (max-height: 450px) {
+@media screen and (max-width: 600px) {
   .overlay a {font-size: 20px}
   .overlay .closebtn {
     font-size: 40px;
@@ -83,28 +83,52 @@ a:hover, a:focus {
 
 .navBar{
   display:flex;
-  justify-content: space-between;
+  justify-items: space-between;
   align-items: center;
-  padding: 0px 20px 5px 20px;
+  padding: 0px;
   background: linear-gradient(148deg, #FAF38F 0%, #8c6309 100%);
   border-radius:1px;
   height:100px;
+  width:100%;
 }
-
-#menu{
-  width: 30px;
-  height:30px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  border-radius:10px
-}
-
 #logo{
+  width:60%;
   font-family: Cinzel;
   color: rgb(62, 56, 56);
   text-shadow: 1px 1px 1px white;
+  margin:0 10% 0 1%;
+  padding:0;
 }
+
+#buttons{
+  width:40%;
+  height:80%;
+  justify-self: flex-end;
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right:5%;
+}
+
+#log{
+  margin:0 5% 0 0 ;
+  width:80%;
+  padding:2%;
+  border-radius:10px;
+
+}
+
+#menu{
+  width: 30%;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  border-radius:10px;
+  margin:0;
+  padding:1%
+}
+
+
 
 #menu--image{
   background-color:white;

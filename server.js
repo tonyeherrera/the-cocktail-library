@@ -6,16 +6,18 @@ const {expressjwt} = require('express-jwt')
 const path = require("path")
 const process = require("process");
 
-require("dotenv").config()
+require('dotenv').config()
+
 
 app.use(express.static("./client/build"))
 app.use(express.json())
 app.use(morgan("dev"))
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-mongoose.connect(process.env.MONGODB_URI, ()=> console.log("Connected to DB"))
+mongoose.connect(process.env.MONGODB_URI, ()=> console.log("Connected to Databae"))
 
 const secret = process.env.SECRET || "some some secret"
+
 
 app.use('/auth', require(path.join(__dirname,'routes','authRouter.js')))
 app.use('/api', expressjwt({ secret, algorithms: ['HS256']}))
@@ -38,7 +40,7 @@ app.get('*', (req, res) => {
 const port = process.env.PORT || 9000
 
 app.listen(port, () => {
-    console.log('Server is running on local port 9000')
+    console.log('Server is running on local port 9000 ')
 })
 
 
