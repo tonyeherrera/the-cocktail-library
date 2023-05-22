@@ -88,7 +88,7 @@ a:hover, a:focus {
   padding: 0px;
   background: linear-gradient(148deg, #FAF38F 0%, #8c6309 100%);
   border-radius:1px;
-  height:100px;
+  height:15%;
   width:100%;
 }
 #logo{
@@ -107,7 +107,7 @@ a:hover, a:focus {
   display:flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right:5%;
+  margin:1%  1% 1% 0%;
 }
 
 #log{
@@ -138,7 +138,7 @@ a:hover, a:focus {
 }
 
 .content{
-  height:100%;
+  height:80%;
   width:100%;
   display:flex;
   flex-direction: column;
@@ -146,7 +146,7 @@ a:hover, a:focus {
   justify-content: space-evenly;
   background: linear-gradient(180deg, rgba(8,1,13,1) 0%, rgb(58, 56, 50) 2%, rgb(213, 210, 206) 82%);
   color:aliceblue;
-  padding-bottom:50%;
+  padding-bottom:150%;
   text-align: center;
 }
 .recipeCard{
@@ -368,27 +368,34 @@ a:hover, a:focus {
 .footer{
   position: fixed;
   bottom:0;
-  padding:10px 0 10px 0;
-  min-width:100%;
-  height:30px;
-  font-size: 5px;
+  padding:10px 5px 10px 5px;
+  width:100%;
+  height:5%;
+  font-size: 30%;
   display:flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items:center;
   background: linear-gradient(180deg, rgb(213, 210, 206) 10%, rgb(58, 56, 50) 98%, rgba(8,1,13,1) 100%);
   color:rgb(223, 219, 219);
   text-shadow: 0px 0px 2px black;
 }
 
+#footer-text{
+  width:80%;
+  padding:0;
+}
+
 .icon-container{
-  padding-left:20px;
+  width:8rem;
+  height:100%;
+  padding:2%
 }
 
 .icons > img{
   background-color:rgb(255, 255, 255);
   box-shadow: 0 0 8px white;
   border-radius:50%;
-  height:30px;
-  width:30px;
-  margin:5px;
+  height:100%;
+  width:35%;
+  margin:1%
 }
